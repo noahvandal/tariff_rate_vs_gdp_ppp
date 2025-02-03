@@ -62,9 +62,10 @@ def create_scatter_plot():
         p = np.poly1d(z)
         plt.plot(merged_data['WB_Rate'], p(merged_data['WB_Rate']), "r--", alpha=0.8)
         
-        # Calculate correlation coefficient
+        # Calculate correlation coefficient and R-squared
         correlation = merged_data['WB_Rate'].corr(merged_data['GDP_PPP'])
-        plt.text(0.8, 0.95, f'Correlation: {correlation:.2f}', 
+        r_squared = correlation ** 2
+        plt.text(0.8, 0.95, f'Correlation: {correlation:.2f}\nR²: {r_squared:.2f}', 
                 transform=ax.transAxes, fontsize=10)
         
         # Add grid lines
